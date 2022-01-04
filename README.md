@@ -9,10 +9,4 @@
 * `npm install` - Install dependencies
 * `npm run dev` - Run the app in development mode
 
-<<<<<<< HEAD
-Hello
-=======
-
-hello hello
-Alex Theoklitou
->>>>>>> development
+Hello this is Joe
