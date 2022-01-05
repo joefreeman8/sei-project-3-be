@@ -24,16 +24,6 @@ async function profileShow(req, res, next) {
 }
 
 
-async function profileCreate(req, res, next) {
-  try {
-    const newUser = await User.create(req.body)
-    return res.status(200).json(newUser)
-  } catch (err) {
-    next(err)
-  }
-}
-
-
 async function profileUpdate(req, res, next) {
   try {
     const userToUpdate = await User.findById(req.params.id)
@@ -66,7 +56,6 @@ async function profileDelete(req, res, next) {
 export default {
   index: profileIndex,
   show: profileShow,
-  create: profileCreate,
   update: profileUpdate,
   delete: profileDelete,
 }
