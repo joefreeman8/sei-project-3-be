@@ -3,7 +3,6 @@ import mongooseUniqueValidator from 'mongoose-unique-validator'
 import bcrypt from 'bcrypt'
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, unique: true, maxlength: 50, required: true },
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
   name: { type: String, required: true },
