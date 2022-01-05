@@ -1,5 +1,5 @@
-import profiles from '../controllers/profiles.js'
-import Profiles from './data/profiles.js'
+import profilesData from './data/profiles.js'
+import User from '../models/user.js'
 import { connectDb, disconnectDb, truncateDb } from './helpers.js'
 
 async function seed() {
@@ -10,7 +10,9 @@ async function seed() {
     await truncateDb()
     console.log('🤖 Database Dropped')
 
-    const profiles = await Profiles.create(profiles)
+    
+
+    const profiles = await User.create(profilesData)
     console.log(`🤖 ${profiles.length} Profiles added to the database`)
 
     console.log('🤖 Goodbye')

@@ -11,8 +11,8 @@ const messageSchema = new mongoose.Schema({
 
 const chatSchema = new mongoose.Schema({
   messages: [messageSchema],
-  userOne: { type: mongoose.Schema.ObjectId, ref: 'Profile', required: true },
-  userTwo: { type: mongoose.Schema.ObjectId, ref: 'Profile', required: true },
+  userOne: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  userTwo: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
 })
 
 chatSchema.plugin(mongooseUniqueValidator)
