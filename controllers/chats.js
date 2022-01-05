@@ -1,5 +1,5 @@
-import Profile from '../models/profile.js'
-import Chat from '../models/chats.js'
+import User from '../models/user.js'
+import Chat from '../models/chat.js'
 
 //* Chat
 async function chatIndex(_req, res, next) {
@@ -25,7 +25,7 @@ async function chatShow(req, res, next) {
 async function chatCreate(req, res, next) {
   const { chatId } = req.params
   try {
-    const chat = await Profile.findById(chatId)
+    const chat = await User.findById(chatId)
     if (!chat) throw new Error()
     chat.chat.push(req.body)
     await chat.save()
@@ -36,14 +36,14 @@ async function chatCreate(req, res, next) {
 }
 
 async function chatDelete(req, res, next) {
-  const { profileId, chatId } = req.params
+  const { userId, chatId } = req.params
   try {
-    const profile = await Profile.findById(profileId)
-    if (!profile) throw new Error()
-    const chatToDelete = profile.comments.id(chatId)
+    const user = await User.findById(userId)
+    if (!user) throw new Error()
+    const chatToDelete = user.comments.id(chatId)
     if (!chatToDelete) throw new Error()
     await chatToDelete.remove()
-    await profile.save()
+    await user.save()
     return res.sendStatus(204)
   } catch (err) {
     next(err)

@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import mongooseUniqueValidator from 'mongoose-unique-validator'
 import bcrypt from 'bcrypt'
 
-const profileSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   username: { type: String, unique: true, maxlength: 50, required: true },
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
@@ -27,18 +27,18 @@ const profileSchema = new mongoose.Schema({
   children: { type: String },
 })
 
-profileSchema.set('toJSON', {
+userSchema.set('toJSON', {
   transform(_doc, json) {
     delete json.password
     return json
   },
 })
 
-profileSchema.virtual('passwordConfirmation').set(function (passwordConfirmation) {
+userSchema.virtual('passwordConfirmation').set(function (passwordConfirmation) {
   this._passwordConfirmation = passwordConfirmation
 })
 
-profileSchema.pre('validate', function (next) {
+userSchema.pre('validate', function (next) {
   if (
     this.isModified('password') &&
     this.password !== this._passwordConfirmation
@@ -48,18 +48,18 @@ profileSchema.pre('validate', function (next) {
   next()
 })
 
-profileSchema.pre('save', function (next) {
+userSchema.pre('save', function (next) {
   if (this.isModified('password')) {
     this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync())
   }
   next()
 })
 
-profileSchema.methods.validatePassword = function (password) {
+userSchema.methods.validatePassword = function (password) {
   return bcrypt.compareSync(password, this.password)
 }
 
 
-profileSchema.plugin(mongooseUniqueValidator)
+userSchema.plugin(mongooseUniqueValidator)
 
-export default mongoose.model('Profile', profileSchema)
+export default mongoose.model('User', userSchema)

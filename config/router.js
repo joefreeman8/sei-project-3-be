@@ -1,22 +1,21 @@
 import express from 'express'
 import profile from '../controllers/profiles.js'
 import chat from '../controllers/chats.js'
-import auth from '../controllers/auth.js'
-import secureRoute from '/lib/secureRoute.js'
+import secureRoute from '../lib/secureRoute.js'
 
 const router = express.Router()
 
 router.route('/potentialsniffs')
-  .get(profile.index)
+  .get(secureRoute, profile.index)
   .post(secureRoute, profile.create)
 
 router.route('/potentialsniffs/:profileId')
-  .get(profile.show)
+  .get(secureRoute, profile.show)
   .put(secureRoute, profile.update)
   .delete(secureRoute, profile.delete)
 
 router.route('/chat')
-  .get(secureRoute, profile.chatIndex)
+  .get(secureRoute, chat.chatIndex)
 
 router.route('/chat/:chatId')
   .get(secureRoute, chat.chatShow)
@@ -28,8 +27,5 @@ router.route('/chat/:chatId/messages')
 
 router.route('/chat/:chatId/messages/:messageId')
   .delete(secureRoute, chat.messageDelete)
-
-router.post('/register', auth.register)
-router.post('/login', auth.login)
 
 export default router

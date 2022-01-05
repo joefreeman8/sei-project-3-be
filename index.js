@@ -1,9 +1,9 @@
 import express from 'express'
 import { connectDb } from './db/helpers.js'
+import logger from './lib/logger.js'
+import router from './config/router.js'
 import { port } from './config/environment.js'
 import errorHandler from './lib/errorHandler.js'
-import router from './config/router.js'
-import logger from './lib/logger.js'
 
 const app = express()
 
@@ -15,11 +15,15 @@ app.use(errorHandler)
 async function startServer() {
   try {
     await connectDb()
-    console.log('🤖 Mongoose is connected')
+    console.log('🤖 Mongo is Connected')
     app.listen(port, () => console.log(`🤖 Listening on Port: ${port}`))
   } catch (err) {
-    console.log('🤖 Oh no something went wrong')
+    console.log('🤖 Something went wrong!')
+    console.log(err)
   }
 }
 
 startServer()
+
+
+
