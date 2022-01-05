@@ -11,10 +11,10 @@ const messageSchema = new mongoose.Schema({
 
 const chatSchema = new mongoose.Schema({
   messages: [messageSchema],
-  sender: { type: mongoose.Schema.ObjectId, ref: 'Profile', required: true },
-  receiver: { type: String, required: true },
+  userOne: { type: mongoose.Schema.ObjectId, ref: 'Profile', required: true },
+  userTwo: { type: mongoose.Schema.ObjectId, ref: 'Profile', required: true },
 })
 
 chatSchema.plugin(mongooseUniqueValidator)
 
-export default mongoose.model('Chat', chatSchema)
+export default mongoose.model('Chat', chatSchema) 
