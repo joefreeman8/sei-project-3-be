@@ -20,6 +20,7 @@ async function profileShow(req, res, next) {
     return res.status(200).json(userToShow)
   } catch (err) {
     next(err)
+    console.log(err)
   }
 }
 
