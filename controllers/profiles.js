@@ -13,7 +13,7 @@ async function profileIndex(_req, res, next) {
 
 async function profileShow(req, res, next) {
   try {
-    const userToShow = await User.findById(req.params.id)
+    const userToShow = await User.findById(req.params)
     if (!userToShow) { 
       throw new Error()
     }
@@ -41,7 +41,7 @@ async function profileUpdate(req, res, next) {
 
 async function profileDelete(req, res, next) {
   try {
-    const userToDelete = await User.findById(req.params.id)
+    const userToDelete = await User.findById(req.params)
     if (!userToDelete) {
       throw new Error()
     }
