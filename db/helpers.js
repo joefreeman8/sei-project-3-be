@@ -5,7 +5,6 @@ export function connectDb() {
   const opts = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
   }
   return mongoose.connect(dbURI, opts)
 }

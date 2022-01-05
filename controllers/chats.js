@@ -1,5 +1,5 @@
 import User from '../models/user.js'
-import Chat from '../models/chats.js'
+import Chat from '../models/chat.js'
 
 //* Chat
 async function chatIndex(_req, res, next) {
