@@ -7,9 +7,7 @@ import auth from '../controllers/auth.js'
 const router = express.Router()
 
 router.route('/potentialsniffs')
-  .get(profile.index)
-
-console.log('hello')
+  .get(secureRoute, profile.index)
 
 router.route('/potentialsniffs/:profileId')
   .get(secureRoute, profile.show)
