@@ -1,10 +1,10 @@
-import Profile from '../models/profile.js'
+import User from '../models/user.js'
 
 
 async function profileIndex(_req, res, next) {
   try {
-    const profiles = await Profile.find()
-    return res.status(200).json(profiles)
+    const users = await User.find()
+    return res.status(200).json(users)
   } catch (err) {
     next(err)
   }
@@ -13,11 +13,11 @@ async function profileIndex(_req, res, next) {
 
 async function profileShow(req, res, next) {
   try {
-    const profileToShow = await Profile.findById(req.params.id)
-    if (!profileToShow) { 
+    const userToShow = await User.findById(req.params.id)
+    if (!userToShow) { 
       throw new Error()
     }
-    return res.status(200).json(profileToShow)
+    return res.status(200).json(userToShow)
   } catch (err) {
     next(err)
   }
@@ -26,8 +26,8 @@ async function profileShow(req, res, next) {
 
 async function profileCreate(req, res, next) {
   try {
-    const createdProfile = await Profile.create(req.body)
-    return res.status(200).json(createdProfile)
+    const newUser = await User.create(req.body)
+    return res.status(200).json(newUser)
   } catch (err) {
     next(err)
   }
@@ -36,13 +36,13 @@ async function profileCreate(req, res, next) {
 
 async function profileUpdate(req, res, next) {
   try {
-    const profileToUpdate = await Profile.findById(req.params.id)
-    if (!profileToUpdate) {
+    const userToUpdate = await User.findById(req.params.id)
+    if (!userToUpdate) {
       throw new Error()
     }
-    Object.assign(profileToUpdate, req.body)
-    await profileToUpdate.save()
-    return res.status(202).json(profileToUpdate)
+    Object.assign(userToUpdate, req.body)
+    await userToUpdate.save()
+    return res.status(202).json(userToUpdate)
   } catch (err) {
     next(err)
   }
@@ -50,11 +50,11 @@ async function profileUpdate(req, res, next) {
 
 async function profileDelete(req, res, next) {
   try {
-    const profileToDelete = await Profile.findById(req.params.id)
-    if (!profileToDelete) {
+    const userToDelete = await User.findById(req.params.id)
+    if (!userToDelete) {
       throw new Error()
     }
-    await profileToDelete.remove()
+    await userToDelete.remove()
     return res.sendStatus(204)
   } catch (err) {
     next(err)
