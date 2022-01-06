@@ -10,8 +10,6 @@ async function seed() {
     await truncateDb()
     console.log('🤖 Database Dropped')
 
-    
-
     const profiles = await User.create(profilesData)
     console.log(`🤖 ${profiles.length} Profiles added to the database`)
 
