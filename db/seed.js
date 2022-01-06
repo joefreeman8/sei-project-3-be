@@ -19,7 +19,7 @@ async function seed() {
     console.log('🤖 Something went wrong')
     console.log(err)
   }
-  disconnectDb
+  await disconnectDb()
 }
 
 seed()
