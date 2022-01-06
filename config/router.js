@@ -7,7 +7,7 @@ import auth from '../controllers/auth.js'
 const router = express.Router()
 
 router.route('/potentialsniffs')
-  .get(secureRoute, users.index)
+  .get(users.index)
 
 router.route('/potentialsniffs/:userId')
   .get(secureRoute, users.show)
