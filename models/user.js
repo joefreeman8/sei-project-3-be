@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
   name: { type: String, required: true },
-  picture: { type: String, required: true },
+  picture: { type: String },
   elevatorPitch: { type: String, required: true, maxlength: 140 },
   age: { type: Number, required: true },
   height: { type: Number },
