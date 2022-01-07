@@ -100,7 +100,7 @@ export default [
     email: 'taz@email',
     password: 'pass',
     passwordConfirmation: 'pass',
-    picture: 'https://i.imgur.com/yhhQEES.jpg',
+    picture: 'https://res.cloudinary.com/sniffers03/image/upload/v1641548849/SEI-project-three/yhhQEES_bxfyha.jpg',
     elevatorPitch: 'I enjoy long walks on sandy beaches... and sniffing butts',
     age: 4,
     height: 66,
