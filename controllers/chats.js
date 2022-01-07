@@ -5,7 +5,7 @@ import { NotFound, Unauthorized } from '../lib/errors.js'
 async function chatIndex(req, res, next) {
   const { currentUserId } = req
   try {
-    const chat = await Chat.find().populate('userOne')
+    const chat = await Chat.find()
     console.log(chat)
     const filteredChats = chat.filter(chat => {
       return chat.userOne.equals(currentUserId) || chat.userTwo.equals(currentUserId)
