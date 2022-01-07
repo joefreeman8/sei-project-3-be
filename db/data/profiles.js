@@ -388,7 +388,7 @@ export default [
     email: 'stillsalem@email',
     password: 'pass',
     passwordConfirmation: 'pass',
-    picture: 'salemUrl',
+    picture: 'https://i.imgur.com/oM0KbV8.png',
     elevatorPitch: 'Wait til you see my human face',
     age: 500,
     height: 35,
