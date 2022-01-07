@@ -4,8 +4,9 @@ import { NotFound, Unauthorized } from '../lib/errors.js'
 //* Chat
 async function chatIndex(req, res, next) {
   const { currentUserId } = req
+  console.log(currentUserId)
   try {
-    const chat = await Chat.find().populate('userOne')
+    const chat = await Chat.find()
     console.log(chat)
     const filteredChats = chat.filter(chat => {
       return chat.userOne.equals(currentUserId) || chat.userTwo.equals(currentUserId)
@@ -34,6 +35,7 @@ async function chatCreate(req, res, next) {
   req.body.addedBy = req.currentUser
   try {
     const createdChat = await Chat.create(req.body)
+    console.log(createdChat)
     return res.status(200).json(createdChat)
   } catch (err) {
     next(err)
