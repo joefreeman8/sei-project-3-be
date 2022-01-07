@@ -11,6 +11,9 @@ router.route('/potentialsniffs')
 
 router.route('/potentialsniffs/:userId')
   .get(secureRoute, users.show)
+
+router.route('/account/:userId')
+  .get(secureRoute, users.show)
   .put(secureRoute, users.update)
   .delete(secureRoute, users.delete)
 
