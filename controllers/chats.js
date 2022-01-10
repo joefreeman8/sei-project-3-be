@@ -69,7 +69,7 @@ async function messageCreate(req, res, next) {
     if (!chat) {
       throw new NotFound()
     }
-    if (!chat.userOne.equals(req.currentUserId)) {
+    if (!chat.userOne.equals(req.currentUserId) && !chat.userTwo.equals(req.currentUserId)) {
       throw new Unauthorized()
     }
     chat.messages.push(req.body)
