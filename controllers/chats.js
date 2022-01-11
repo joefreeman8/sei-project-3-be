@@ -49,7 +49,7 @@ async function chatDelete(req, res, next) {
     if (!chatToDelete) {
       throw new NotFound()
     }
-    if (!chatToDelete.userOne.equals(req.currentUserId)) {
+    if (!chatToDelete.userOne.equals(req.currentUserId) && !chatToDelete.userTwo.equals(req.currentUserId)) {
       throw new Unauthorized()
     }
     await chatToDelete.remove()
@@ -69,7 +69,7 @@ async function messageCreate(req, res, next) {
     if (!chat) {
       throw new NotFound()
     }
-    if (!chat.userOne.equals(req.currentUserId)) {
+    if (!chat.userOne.equals(req.currentUserId) && !chat.userTwo.equals(req.currentUserId)) {
       throw new Unauthorized()
     }
     chat.messages.push(req.body)
@@ -120,9 +120,6 @@ async function messageDelete(req, res, next) {
     const chat = await Chat.findById(chatId)
     if (!chat) {
       throw new NotFound()
-    }
-    if (!chat.userOne.equals(req.currentUserId)) {
-      throw new Unauthorized()
     }
     const messageToDelete = chat.messages.id(messageId)
     if (!messageToDelete) throw new Error()
