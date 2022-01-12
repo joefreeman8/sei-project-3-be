@@ -83,6 +83,40 @@ async function messageCreate(req, res, next) {
   }
 }
 
+
+//
+
+async function messagesShow(req, res, next) {
+  const { chatId } = req.params
+  try {
+    const messages = await Chat.findById(chatId)
+    if (!messages) {
+      throw new NotFound()
+    }
+    if (!messages.userOne.equals(req.currentUserId)) {
+      throw new Unauthorized()
+    }
+    return res.status(201).json(messages)
+  } catch (err) {
+    next(err)
+  }
+}
+
+// async function chatShow(req, res, next) {
+//   const { chatId } = req.params
+//   try {
+//     const chat = await Chat.findById(chatId)
+//     if (!chat) {
+//       throw new NotFound()
+//     }
+//     return res.status(200).json(chat)
+//   } catch (err) {
+//     next(err)
+//   }
+// }
+
+
+
 async function messageDelete(req, res, next) {
   const { chatId, messageId } = req.params
   try {
@@ -108,5 +142,6 @@ export default {
   chatCreate,
   chatDelete,
   messageCreate,
+  messagesShow,
   messageDelete,
 }
