@@ -45,10 +45,13 @@ async function chatCreate(req, res, next) {
 async function chatDelete(req, res, next) {
   const { chatId } = req.params
   try {
+    console.log(chatId)
+    console.log('hello')
     const chatToDelete = await Chat.findById(chatId)
     if (!chatToDelete) {
       throw new NotFound()
     }
+    console.log(chatToDelete.userOne, chatToDelete.userTwo, req.currentUserId)
     if (!chatToDelete.userOne.equals(req.currentUserId) && !chatToDelete.userTwo.equals(req.currentUserId)) {
       throw new Unauthorized()
     }
