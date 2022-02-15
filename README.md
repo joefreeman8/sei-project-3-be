@@ -346,7 +346,7 @@ Making the chat feature seem like it was “live” meaning having messages come
 
 ## Future Improvements ##
 * Make the app mobile responsive.
-* Add “time” to see when a message was sent. 
+* Add timestamp to see when a message was sent. 
 * Create a like button so you can be connected through likes and not just open chats.
 * Using a chat feature plugin.
 * Add further error handling. 
