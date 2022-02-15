@@ -204,7 +204,7 @@ After this a lot of my time was taken adding data to our seeds so we could have 
  The contents of the login function also stores the userId into localStorage, the same way as the register function above. We found this was vital as it was the only way to link the user to their own account for viewing, editing or deleting. 
 
 ## Filtering ##
-The filtering on the Index page was incredibly satisfying. The fitler has been set in a way which can stack multiple options, allowing for a very specific search.
+The filtering on the Index page was incredibly satisfying. The filter has been set in a way which can stack multiple options, allowing for a very specific search.
 ```js
   const filterProfiles = (profiles) => {
     return profiles.filter(profile => {
@@ -231,6 +231,8 @@ The filtering on the Index page was incredibly satisfying. The fitler has been s
     })
   }
   ```
+
+  ![filter](assets/filter.png)
 
 ## Delete Functionality ##
 When a user is on the account page they can delete their account, doing so will also delete their chat history along with it, this was done by storing their “chats” in state and then attaching the chat._id to the delete request. 
