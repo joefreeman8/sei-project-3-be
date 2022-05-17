@@ -12,8 +12,10 @@ const corsOptions = {
   origin: true,
 }
 
+app.options('*', corsOptions)
+
 app.use(express.json())
-app.use(cors(corsOptions))
+app.use(cors())
 app.use('/', logger)
 app.use('/api', router)
 app.use(errorHandler)
