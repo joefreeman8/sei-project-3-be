@@ -4,13 +4,9 @@ import logger from './lib/logger.js'
 import router from './config/router.js'
 import { port } from './config/environment.js'
 import errorHandler from './lib/errorHandler.js'
-// import cors from 'cors'
 
 const app = express()
 
-// const corsOptions = {
-//   origin: true,
-// }
 
 app.options('*', function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -20,7 +16,6 @@ app.options('*', function (req, res, next) {
 } )
 
 app.use(express.json())
-// app.use(cors())
 app.use('/', logger)
 app.use('/api', router)
 app.use(errorHandler)
