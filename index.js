@@ -9,7 +9,7 @@ import cors from 'cors'
 const app = express()
 
 const corsOptions = {
-  origin: '*',
+  origin: true,
 }
 
 app.use(express.json())
