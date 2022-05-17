@@ -7,13 +7,12 @@ import errorHandler from './lib/errorHandler.js'
 
 const app = express()
 
-
-app.options('*', function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Methods', '*')
-  res.setHeader('Access-Control-Allow-Headers', '*')
-  next()
-} )
+// app.options('*', function (req, res, next) {
+//   res.setHeader('Access-Control-Allow-Origin', '*')
+//   res.setHeader('Access-Control-Allow-Methods', '*')
+//   res.setHeader('Access-Control-Allow-Headers', '*')
+//   next()
+// } )
 
 app.use(express.json())
 app.use('/', logger)
