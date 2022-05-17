@@ -8,8 +8,12 @@ import cors from 'cors'
 
 const app = express()
 
+const corsOptions = {
+  origin: '*',
+}
+
 app.use(express.json())
-app.use(cors())
+app.use(cors(corsOptions))
 app.use('/', logger)
 app.use('/api', router)
 app.use(errorHandler)
