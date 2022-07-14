@@ -42,7 +42,7 @@ The third project on the course, taken immediately after a short Christmas break
   * VScode
 
 ## Deployment ##
-The app is deployed on Netlify and can be found [**here**](https://loveatfirstsniff.netlify.app/ "here").  
+The app is deployed on Netlify and can be found [**here**](https://sniff.netlify.app/ "here").  
 
 Please use the following credentials to sign in: 
 
